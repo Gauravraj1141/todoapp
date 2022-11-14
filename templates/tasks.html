@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %} Tasks {% endblock title %}
+
+
+
+{% block css %}  
+<style>
+
+  .card {
+    margin: 0 auto; 
+    float: none; 
+    margin-bottom: 10px; 
+}
+
+</style>
+
+
+
+{% endblock css %}
+
+{% block body %}
+<div class="container my-3 ">
+
+    <h1 class = "text-center "> Tasks list </h1><hr>
+    
+          {% for item in  alldata %}
+        <div class = "cart" >
+          <div class="card " style="width:30rem">
+            <div class="card-body">
+              <h5 class="card-title">{{forloop.counter}} . {{item.task_title}}</h5>
+              <p class="card-text">{{item.task_desc}}</p>
+              <div class="text-center">
+              <a href= "delete/{{item.task_id}}/" class="btn btn-danger">Delete</a>
+              <a href= "{{item.task_id}}" class="btn btn-warning">update</a>
+              </div>
+            </div>
+          </div>
+        </div>
+          {% endfor %}
+</div>
+
+{% endblock body %}

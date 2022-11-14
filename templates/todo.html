@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+
+{% block title %}  Todo List  {% endblock title %}
+    
+{% block css %}
+<style>
+
+  .mybtn{
+    width: 135px;
+     heigth:50px;
+     height: 57px;
+     font-size: 30px;
+     margin: 33px;
+    }
+
+</style>
+
+{% endblock css %}
+
+{% block body %}
+
+
+
+<div class= "container my-4 ">
+    <h1 class="text-center"> Welcome to Todos </h1><hr>
+
+<form action="/" method="POST">{% csrf_token %} 
+
+<div class="mb-3 my-2 ">
+    <label for="title" class="form-label text-center"><h5>Task Title</h5></label>
+    <input type="text" class="form-control" id="title" name="title" required>
+  </div>
+  <div class="mb-3">
+    <label for="desc" class="form-label text-center"><h5> Write Here Your Tasks</h5> </label>
+    <textarea class="form-control" id="desc" name="desc" rows="8" required></textarea>
+  </div>
+  <div class="text-center ">
+    <button type="submit" class="btn btn-success mybtn" >Add</button>
+    <a href="tasks" class="btn btn-warning mybtn">Tasklist</a>
+    </div>
+</form>
+
+
+{% endblock body %}
+    
+{% block js %}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+  
+  {% if success %}
+  swal("Hurry! Your Task has been added Successfully ");
+
+
+  {% endif %}
+  
+</script>
+{% endblock js %}

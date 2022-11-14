@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+
+{% block title %}  Todo List  {% endblock title %}
+    
+{% block css %}
+<style>
+
+  .mybtn{
+    width: 135px;
+     heigth:50px;
+     height: 57px;
+     font-size: 30px;
+     margin: 33px;
+    }
+
+</style>
+
+{% endblock css %}
+
+{% block body %}
+
+
+
+<div class= "container my-4 ">
+    <h1 class="text-center"> Welcome to Todos </h1><hr>
+
+    {% for dt in data  %}
+<form action="{{dt.task_id}}" method="POST">{% csrf_token %} 
+<div class="mb-3 my-2 ">
+    <label for="title" class="form-label text-center"><h5>Task Title</h5></label>
+    <input type="text" value='{{dt.task_title}}' class="form-control" id="title" name="title" required>
+  </div>
+  <div class="mb-3">
+    <label for="desc" class="form-label text-center"><h5> Write Here Your Tasks</h5> </label>
+    <textarea class="form-control" id="desc" name="desc"  rows="8" required>{{dt.task_desc}}</textarea>
+  </div>
+  {% endfor %}
+  <div class="text-center ">
+    <button type="submit" class="btn btn-success mybtn" >Update</button>
+    
+    </div>
+</form>
+
+
+{% endblock body %}
+    
